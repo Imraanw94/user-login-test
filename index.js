@@ -19,6 +19,7 @@ const userController = require("./controllers/user.controller");
 const jwt = require("jsonwebtoken");
 
 require("dotenv").config();
+const path = require("path");
 
 // To get the port number from the environment variables instead of hardcoding
 // it, we use the following code:
@@ -183,6 +184,13 @@ app.put("/edittodo", (req, res) => {
     res.status(401).send({ err: "Bad JWT!" });
   }
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "frontend/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
 // Route handler if the user enters an unknown path
 app.get("*", function (req, res, next) {

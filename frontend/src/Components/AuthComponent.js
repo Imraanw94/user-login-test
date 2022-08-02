@@ -1,8 +1,5 @@
-import React, { Component, useRef, useState } from "react";
-import Container from "react-bootstrap/Container";
-import { Col, Form, Row } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { Card } from "react-bootstrap";
+import React, { useRef, useState } from "react";
+import { Button, Card, Form, Row } from "react-bootstrap";
 import ToDoApp from "./ToDoApp";
 
 // The Authentication Component Function.
